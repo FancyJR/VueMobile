@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= webpackConfig.name %></title>
+    <script>
+      (function () {
+        // 在标准 375px 适配下，100px = 1rem;
+        var baseFontSize = 100;  
+        var baseWidth = 375;
+  
+        var set = function () {
+          var clientWidth = document.documentElement.clientWidth || window.innerWidth;
+  
+          var rem = 100;
+          if (clientWidth != baseWidth) {
+            rem = Math.floor(clientWidth / baseWidth * baseFontSize);
+          }
+  
+          document.querySelector('html').style.fontSize = rem + 'px';
+        }
+        set();
+  
+        window.addEventListener('resize', set);
+      }());
+     
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
